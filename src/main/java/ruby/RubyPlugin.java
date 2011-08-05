@@ -13,8 +13,10 @@ import org.jenkinsci.jruby.JRubyXStream;
 import org.jruby.embed.LocalContextScope;
 import org.jruby.embed.ScriptingContainer;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -118,12 +120,14 @@ public class RubyPlugin extends Plugin implements Describable<RubyPlugin> {
 	public RubyPlugin() {
 		this.ruby = new ScriptingContainer(LocalContextScope.THREADSAFE);
 		this.ruby.setClassLoader(this.getClass().getClassLoader());
-		this.ruby.getLoadPaths().add(0, this.getClass().getResource("support").getPath());
+        this.ruby.getLoadPaths().add(0, "ruby/support");
+        this.ruby.getLoadPaths().add(0, "bundled-gems");    // add exploded 'bundled-gems'
 //		this.ruby.getLoadPaths().add(this.getClass().getResource("jenkins-plugins/lib").getPath());
 		this.ruby.getLoadPaths().add(this.getClass().getResource(".").getPath());
 		this.extensions = new ArrayList<ExtensionComponent>();
 		this.ruby.runScriptlet("require 'rubygems'");
-		this.ruby.runScriptlet("require 'bundled-gems.jar'");
+//		this.ruby.runScriptlet("require 'bundled-gems.jar'");
+        this.ruby.runScriptlet("require 'json'");   //test
 		this.ruby.runScriptlet("require 'jenkins/plugins'");
 		Object pluginClass = this.ruby.runScriptlet("Jenkins::Plugin");
 		this.plugin = this.ruby.callMethod(pluginClass, "new", this);
