@@ -3,13 +3,21 @@
 	<parent>
 		<groupId>org.jenkins-ci.plugins</groupId>
 		<artifactId>plugin</artifactId>
-		<version>1.447</version>
+		<version>3.2</version>
+                <relativePath />
 	</parent>
 
 	<artifactId>ruby-runtime</artifactId>
 	<version>0.10-SNAPSHOT</version>
   <description>Hosts runtime for enabling pure-Ruby plugins</description>
+  <url>https://wiki.jenkins.io/display/JENKINS/Jenkins+plugin+development+in+Ruby</url>
 	<packaging>hpi</packaging>
+
+        <properties>
+            <jenkins-core.version>2.102-20180111.220353-1</jenkins-core.version> <!-- TODO https://github.com/jenkinsci/jenkins/pull/3120 -->
+            <jenkins-war.version>2.102-20180111.220421-1</jenkins-war.version>
+            <java.level>8</java.level>
+        </properties>
 
 	<dependencies>
       <dependency>
@@ -20,6 +28,10 @@
           <exclusion>
             <groupId>org.kohsuke.stapler</groupId>
             <artifactId>stapler-jelly</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>org.jruby.rack</groupId>
+            <artifactId>jruby-rack</artifactId>
           </exclusion>
         </exclusions>
       </dependency>
@@ -51,7 +63,6 @@
       <plugin>
         <groupId>org.jenkins-ci.tools</groupId>
         <artifactId>maven-hpi-plugin</artifactId>
-        <version>1.78</version>
         <configuration>
           <maskClasses>org.jruby.</maskClasses>
         </configuration>
@@ -63,31 +74,20 @@
   <repositories>
     <repository>
       <id>repo.jenkins-ci.org</id>
-      <url>http://repo.jenkins-ci.org/public/</url>
-    </repository>
-    <repository>
-      <id>codehaus</id>
-      <url>http://repository.codehaus.org/</url>
-    </repository>
-    <repository>
-      <id>maven.jenkins-ci.org</id>
-      <url>http://maven.jenkins-ci.org/content/repositories/snapshots/</url>
-      <snapshots>
-        <enabled>true</enabled>
-      </snapshots>
+      <url>https://repo.jenkins-ci.org/public/</url>
     </repository>
   </repositories>
 
   <pluginRepositories>
 		<pluginRepository>
 			<id>repo.jenkins-ci.org</id>
-			<url>http://repo.jenkins-ci.org/public/</url>
+			<url>https://repo.jenkins-ci.org/public/</url>
 		</pluginRepository>
   </pluginRepositories>
 
   <scm>
     <connection>scm:git:git://github.com/jenkinsci/${project.artifactId}-plugin.git</connection>
     <developerConnection>scm:git:git@github.com:jenkinsci/${project.artifactId}-plugin.git</developerConnection>
-    <url>http://github.com/jenkinsci/${project.artifactId}-plugin</url>
+    <url>https://github.com/jenkinsci/${project.artifactId}-plugin</url>
   </scm>
 </project>

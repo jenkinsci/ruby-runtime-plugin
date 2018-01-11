@@ -1,0 +1,41 @@
+package jenkins.ruby;
+
+import hudson.Extension;
+import jenkins.security.CustomClassFilter;
+import org.jenkinsci.jruby.JRubyXStream;
+import org.jenkinsci.jruby.JavaProxyConverter;
+import org.jruby.RubyArray;
+import org.jruby.RubyBignum;
+import org.jruby.RubyBoolean;
+import org.jruby.RubyFixnum;
+import org.jruby.RubyHash;
+import org.jruby.RubyObject;
+import org.jruby.RubyString;
+import org.jruby.RubySymbol;
+import org.jruby.java.proxies.ConcreteJavaProxy;
+import org.jruby.javasupport.proxy.InternalJavaProxy;
+
+/**
+ * See JEP-200.
+ * @see JRubyXStream
+ * @see JavaProxyConverter
+ */
+@Extension
+public class JRubyXStreamClassFilter implements CustomClassFilter {
+
+    @Override
+    public Boolean permits(Class<?> c) {
+        return InternalJavaProxy.class.isAssignableFrom(c) ||
+            c == RubyArray.class ||
+            c == RubyBignum.class ||
+            c == RubyBoolean.class ||
+            c == RubyFixnum.class ||
+            c == RubyHash.class ||
+            c == RubyObject.class ||
+            c == RubyString.class ||
+            c == RubySymbol.class ||
+            c == ConcreteJavaProxy.class ?
+                true : null;
+    }
+
+}
