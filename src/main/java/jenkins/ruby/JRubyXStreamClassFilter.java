@@ -28,7 +28,7 @@ public class JRubyXStreamClassFilter implements CustomClassFilter {
         return InternalJavaProxy.class.isAssignableFrom(c) ||
             c == RubyArray.class ||
             c == RubyBignum.class ||
-            c == RubyBoolean.class ||
+            RubyBoolean.class.isAssignableFrom(c) ||
             c == RubyFixnum.class ||
             c == RubyHash.class ||
             c == RubyObject.class ||
