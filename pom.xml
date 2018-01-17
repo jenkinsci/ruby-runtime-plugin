@@ -14,8 +14,7 @@
 	<packaging>hpi</packaging>
 
         <properties>
-            <jenkins-core.version>2.102-20180111.220353-1</jenkins-core.version> <!-- TODO https://github.com/jenkinsci/jenkins/pull/3120 -->
-            <jenkins-war.version>2.102-20180111.220421-1</jenkins-war.version>
+            <jenkins.version>2.102</jenkins.version>
             <java.level>8</java.level>
         </properties>
 
