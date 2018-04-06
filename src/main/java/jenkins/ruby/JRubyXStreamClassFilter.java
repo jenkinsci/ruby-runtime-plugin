@@ -10,6 +10,7 @@ import org.jruby.RubyBignum;
 import org.jruby.RubyBoolean;
 import org.jruby.RubyFixnum;
 import org.jruby.RubyHash;
+import org.jruby.RubyNil;
 import org.jruby.RubyObject;
 import org.jruby.RubyString;
 import org.jruby.RubySymbol;
@@ -33,6 +34,7 @@ public class JRubyXStreamClassFilter implements CustomClassFilter {
             RubyBoolean.class.isAssignableFrom(c) ||
             c == RubyFixnum.class ||
             c == RubyHash.class ||
+            c == RubyNil.class ||
             c == RubyObject.class ||
             c == RubyString.class ||
             c == RubySymbol.class ||
