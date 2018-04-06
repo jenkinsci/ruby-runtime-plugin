@@ -30,7 +30,7 @@ public class ScriptingContainerHolder {
      * and then loading up the ruby side of the plugin by creating an
      * instance of the Ruby class Jenkins::Plugin which will serve as
      * its agent in the Ruby world.
-     * <p/>
+     * <p>
      * We also register xstream mappers for JRuby objects so that they
      * can be persisted along with other objects in Jenkins.
      */

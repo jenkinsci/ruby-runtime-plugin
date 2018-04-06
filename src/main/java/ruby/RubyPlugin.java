@@ -100,7 +100,7 @@ public class RubyPlugin extends PluginImpl {
 
 	/**
 	 * Registers an extension with this Ruby plugin so that it will be found later on
-	 * <p/>
+	 * <p>
 	 * This method is generally called from inside Ruby, as objects that implement
 	 * extension points register themselves.
 	 *

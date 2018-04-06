@@ -1,5 +1,6 @@
 package ruby;
 
+import com.thoughtworks.xstream.XStreamException;
 import com.thoughtworks.xstream.converters.MarshallingContext;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
@@ -21,7 +22,10 @@ class RubyPluginRuntimeResolver extends RubyRuntimeResolver {
 	@Override
 	public Ruby unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
 		String pluginid = reader.getAttribute("pluginid");
-		RubyPlugin plugin = (RubyPlugin) Jenkins.getInstance().getPlugin(pluginid);
+		RubyPlugin plugin = (RubyPlugin) Jenkins.get().getPlugin(pluginid);
+        if (plugin == null) {
+            throw new XStreamException("no such plugin " + pluginid);
+        }
 		return plugin.getScriptingContainer().getProvider().getRuntime();
 	}
 
