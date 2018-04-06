@@ -21,7 +21,7 @@ class RubyPluginRuntimeResolver extends RubyRuntimeResolver {
 	@Override
 	public Ruby unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
 		String pluginid = reader.getAttribute("pluginid");
-		RubyPlugin plugin = (RubyPlugin) Jenkins.getInstance().getPlugin(pluginid);
+		RubyPlugin plugin = (RubyPlugin) Jenkins.getActiveInstance().getPlugin(pluginid);
 		return plugin.getScriptingContainer().getProvider().getRuntime();
 	}
 

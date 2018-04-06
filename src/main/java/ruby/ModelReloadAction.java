@@ -31,7 +31,7 @@ public class ModelReloadAction implements RootAction {
     }
 
     public HttpResponse doIndex() {
-        for (RubyPlugin p : Jenkins.getInstance().getPlugins(RubyPlugin.class)) {
+        for (RubyPlugin p : Jenkins.getActiveInstance().getPlugins(RubyPlugin.class)) {
             p.getExtensions().clear();
             p.callMethod(p.getNativeRubyPlugin(), "load_models");
         }

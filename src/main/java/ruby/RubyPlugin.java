@@ -156,7 +156,7 @@ public class RubyPlugin extends PluginImpl {
         initRubyLoadPaths();
         initRubyNativePlugin();
 
-        rackContext = new DefaultServletRackContext(new ServletRackConfig(Jenkins.getInstance().servletContext));
+        rackContext = new DefaultServletRackContext(new ServletRackConfig(Jenkins.getActiveInstance().servletContext));
 	}
 
     /**
