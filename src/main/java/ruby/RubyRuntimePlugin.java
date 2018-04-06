@@ -31,7 +31,7 @@ public class RubyRuntimePlugin extends Plugin {
     }
 
     private void registerJRubyFacet() {
-        List<Facet> facets = WebApp.get(Jenkins.getInstance().servletContext).facets;
+        List<Facet> facets = WebApp.get(Jenkins.getActiveInstance().servletContext).facets;
         for (Facet f : facets) {
             if (f instanceof JRubyFacet)
                 return; // already there

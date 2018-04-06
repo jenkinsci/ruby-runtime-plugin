@@ -3,22 +3,22 @@
 	<parent>
 		<groupId>org.jenkins-ci.plugins</groupId>
 		<artifactId>plugin</artifactId>
-		<version>3.2</version>
-                <relativePath />
+		<version>3.7</version>
+		<relativePath />
 	</parent>
 
 	<artifactId>ruby-runtime</artifactId>
 	<version>0.10-SNAPSHOT</version>
-  <description>Hosts runtime for enabling pure-Ruby plugins</description>
-  <url>https://wiki.jenkins.io/display/JENKINS/Jenkins+plugin+development+in+Ruby</url>
+	<description>Hosts runtime for enabling pure-Ruby plugins</description>
+	<url>https://wiki.jenkins.io/display/JENKINS/Ruby+Runtime+Plugin</url>
 	<packaging>hpi</packaging>
 
-        <properties>
-            <jenkins.version>2.102</jenkins.version>
-            <java.level>8</java.level>
-        </properties>
+  <properties>
+    <jenkins.version>2.102</jenkins.version>
+    <java.level>8</java.level>
+  </properties>
 
-	<dependencies>
+  <dependencies>
       <dependency>
         <groupId>org.kohsuke.stapler</groupId>
         <artifactId>stapler-jruby</artifactId>
@@ -27,10 +27,6 @@
           <exclusion>
             <groupId>org.kohsuke.stapler</groupId>
             <artifactId>stapler-jelly</artifactId>
-          </exclusion>
-          <exclusion>
-            <groupId>org.jruby.rack</groupId>
-            <artifactId>jruby-rack</artifactId>
           </exclusion>
         </exclusions>
       </dependency>
@@ -42,7 +38,7 @@
     <dependency>
       <groupId>org.jruby.rack</groupId>
       <artifactId>jruby-rack</artifactId>
-      <version>1.0.10</version>
+      <version>1.1.13.1</version>
     </dependency>
     <dependency>
       <groupId>org.jenkins-ci</groupId>
@@ -62,7 +58,7 @@
       <plugin>
         <groupId>org.jenkins-ci.tools</groupId>
         <artifactId>maven-hpi-plugin</artifactId>
-        <configuration>
+        <configuration combine.children="append">
           <maskClasses>org.jruby.</maskClasses>
         </configuration>
       </plugin>

@@ -42,7 +42,7 @@ public class RubyExtensionFinder extends ExtensionFinder {
 
     @Override
     public ExtensionComponentSet refresh() throws ExtensionRefreshException {
-        List<RubyPlugin> newList = Jenkins.getInstance().getPlugins(RubyPlugin.class);
+        List<RubyPlugin> newList = Jenkins.getActiveInstance().getPlugins(RubyPlugin.class);
         final List<RubyPlugin> delta = new ArrayList<RubyPlugin>(newList);
         delta.removeAll(parsedPlugins);
         parsedPlugins = newList;
