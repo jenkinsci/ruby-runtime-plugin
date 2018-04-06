@@ -10,7 +10,7 @@
 	<artifactId>ruby-runtime</artifactId>
 	<version>0.10-SNAPSHOT</version>
 	<description>Hosts runtime for enabling pure-Ruby plugins</description>
-	<url>https://wiki.jenkins.io/display/JENKINS/Jenkins+plugin+development+in+Ruby</url>
+	<url>https://wiki.jenkins.io/display/JENKINS/Ruby+Runtime+Plugin</url>
 	<packaging>hpi</packaging>
 
   <properties>
