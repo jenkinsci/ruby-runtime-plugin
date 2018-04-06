@@ -28,10 +28,6 @@
             <groupId>org.kohsuke.stapler</groupId>
             <artifactId>stapler-jelly</artifactId>
           </exclusion>
-          <exclusion>
-            <groupId>org.jruby.rack</groupId>
-            <artifactId>jruby-rack</artifactId>
-          </exclusion>
         </exclusions>
       </dependency>
     <dependency>
